@@ -48,7 +48,7 @@ def extract_file(resume):
     with open(fn, "wb")as f:
         f.write(resume.read())
 
-    if fn.endwith(".pdf"):
+    if fn.endswith(".pdf"):
         try:
             pdf_file = fitz.open(fn)
             text = ""
@@ -58,7 +58,7 @@ def extract_file(resume):
         except Exception as e:
             return f"error reading the file {e}"
    
-    elif fn.endwith(".docx"):
+    elif fn.endswith(".docx"):
         try:
             docxfile = docx2txt.process(fn)
             return docxfile
@@ -117,6 +117,7 @@ if uploaded_file is not None:
 
     else:
         st.error(text)
+
 
 
 
