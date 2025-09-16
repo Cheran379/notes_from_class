@@ -44,7 +44,7 @@ def preprocess(resume):
 
 # %%
 def extract_file(resume):
-    fn = resume.name,lower()
+    fn = resume.name.lower()
     with open(fn, "wb")as f:
         f.write(resume.read())
 
@@ -117,6 +117,7 @@ if uploaded_file is not None:
 
     else:
         st.error(text)
+
 
 
 
