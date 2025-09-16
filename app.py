@@ -102,23 +102,21 @@ if uploaded_file is not None:
         st.subheader('Extracted Resume Text')
         st.write(text[:500] + '...' if len(text) >500 else text)
         processed = preprocess(text)
-        prediction = predict_roles(model,vect,encoder,processed)
-        st.subheade('Top Predicted Roles')
-        for role,prob in prediction.items():
-            st.write(f'**{role}**:{prob:.2f}')
+       
 
-            predictions = predict_roles(model, vect, encoder, processed)
+        predictions = predict_roles(model, vect, encoder, processed)
 
-            st.subheader("Top Predicted Roles")
-            for role, prob in predictions.items():
-                st.write(f"**{role}** :{prob:.2f}")
+        st.subheader("Top Predicted Roles")
+        for role, prob in predictions.items():
+            st.write(f"**{role}** :{prob:.2f}")
 
-            best_role = max(predictions, key=predictions.get)
-            if best_role in job_skills:
-                st.subheader(f"Required skills for {best_role}")
-                st.write(", ".join(job_skills[best_role]))
+        best_role = max(predictions, key=predictions.get)
+        if best_role in job_skills:
+            st.subheader(f"Required skills for {best_role}")
+            st.write(", ".join(job_skills[best_role]))
 
     else:
         st.error(text)
+
 
 
